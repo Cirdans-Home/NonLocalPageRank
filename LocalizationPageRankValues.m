@@ -5,7 +5,7 @@ clear; clc;
 
 load('TestGraphs/adjnoun.mat');
 A = Problem.A;
-G = digraph(A);
+G = graph(A);
 n = size(A,1);
 e = ones(n,1);
 
