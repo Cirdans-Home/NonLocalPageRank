@@ -9,4 +9,4 @@ To run the code the implementation of the Power Method from https://www.cs.purdu
 Informations on the paper, and on the code can be obtained by writing to
 - f.durastante@na.iac.cnr.it
 - stefano.cipolla@math.unipd.it
-- f.tudisco@gssi.it
+- francesco.tudisco@gssi.it
