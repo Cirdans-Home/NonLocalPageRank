@@ -1,0 +1,14 @@
+LayerID LayerLabel
+1 Bakerloo
+2 Central
+3 Circle
+4 District
+5 Hammersmith&City
+6 Jubilee
+7 Metropolitan
+8 Northern
+9 Piccadilly
+10 Victoria
+11 Waterloo&City
+12 Overground
+13 DLR
