@@ -1,4 +1,4 @@
-%%% SCRIPT TO CREATE THE MULTILAYER TENSOR OF MATRO GRAPH 
+%%% SCRIPT TO CREATE THE MULTILAYER TENSOR OF METRO GRAPH 
 
 % Code by:
 % S. Cipolla - Università di Padova, Dipartimento di Matematica
