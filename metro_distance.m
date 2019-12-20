@@ -1,4 +1,11 @@
-% Script For the Metro Distance as in Section 5
+%% SCRIPT FOR METRO DISTANCE
+
+% Code by:
+% S. Cipolla - Università di Padova, Dipartimento di Matematica
+% F. Durastante - Consiglio Nazionale delle Ricerche, Istituto per le
+% Applicazioni del Calcolo "M. Picone"
+% F. Tudisco - Gran Sasso Science Institute
+
 function [D] = colored_distance_new(T)
 % Input: T_ijk is a tensor of dimension n_nodes \times n_nodes \times n_kolors...
 % such that T_ijk=1 if i~j with color k, T_ijk=0 otherwise 
