@@ -1,14 +1,10 @@
-%type london_tube_multiplex.edges
 %%% This script creates the mathematical objects needed to analize London
 %%% tube. The output includes 11 metro lines + 2 train lines and all 
 %%% corresponding nodes.
 clear all
 clc
 addpath('./tensor_toolbox-master');
-%fileID = fopen('./datasets/London_Multiplex_Transport/Dataset/london_tube_multiplex.edges','r');
-%formatSpec = '%d';
-%A = textscan(fileID,formatSpec)
-A = dlmread('./datasets/London_Multiplex_Transport/Dataset/london_tube_multiplex_new.edges',' ',1,0);
+A = dlmread('./London Tube Data/london_tube_edges.txt',' ',1,0);
 %A=int64(A);
 %fclose(fileID);
 [n,m]=size(A);
