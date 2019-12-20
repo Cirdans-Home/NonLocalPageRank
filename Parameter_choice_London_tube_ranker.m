@@ -65,36 +65,6 @@ cs_ratios_spd(:,i)=cs_spd(:,i)./cs_pr;
 end 
 save 'tube_results.mat'
 
-%%
-% figure(1)
-% plot(alpha_array,isim_ratios_spd_gt(5,:),'k-o','LineWidth',2, 'Markersize',10)
-% hold on
-% plot(alpha_array,isim_ratios_spd_gt(10,:),'k-*','LineWidth',2, 'Markersize',10)
-% hold on
-% plot(alpha_array,isim_ratios_spd_gt(15,:),'k-x','LineWidth',2, 'Markersize',10)
-% hold on
-% plot(alpha_array,isim_ratios_md_gt(5,:),'r-o','LineWidth',2, 'Markersize',10)
-% hold on
-% plot(alpha_array,isim_ratios_md_gt(10,:),'r-*','LineWidth',2, 'Markersize',10)
-% hold on
-% plot(alpha_array,isim_ratios_md_gt(15,:),'r-x','LineWidth',2, 'Markersize',10)
-% legend('Spd-Gt 5','Spd-Gt 10','Spd-Gt 15','Md-Gt 5','Md-Gt 10','Md-Gt 15','Location', 'Best');
-% title('Isim Ratios')
-% figure(2)
-% plot(alpha_array,cs_ratios_spd(5,:),'k-o','LineWidth',2, 'Markersize',10)
-% hold on
-% plot(alpha_array,cs_ratios_spd(10,:),'k-*','LineWidth',2, 'Markersize',10)
-% hold on
-% plot(alpha_array,cs_ratios_spd(15,:),'k-x','LineWidth',2, 'Markersize',10)
-% hold on
-% plot(alpha_array,cs_ratios_md(5,:),'r-o','LineWidth',2, 'Markersize',10)
-% hold on
-% plot(alpha_array,cs_ratios_md(10,:),'r-*','LineWidth',2, 'Markersize',10)
-% hold on
-% plot(alpha_array,cs_ratios_md(15,:),'r-x','LineWidth',2, 'Markersize',10)
-% legend('Spd-Gt 5','Spd-Gt 10','Spd-Gt 15','Md-Gt 5','Md-Gt 10','Md-Gt 15','Location', 'Best');
-% title('Cumsum Ratios')
-
 %% Figures 
 %%
 id = 3:13;
