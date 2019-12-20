@@ -3,6 +3,13 @@ function [tau] = ergodicity(A)
 %stochastic matrix
 %   A row stochastic matrix
 %   tau norm-1 ergodic coefficient of A
+%
+% Code by:
+% S. Cipolla - Università di Padova, Dipartimento di Matematica
+% F. Durastante - Consiglio Nazionale delle Ricerche, Istituto per le
+% Applicazioni del Calcolo "M. Picone"
+% F. Tudisco - Gran Sasso Science Institute
+
 
 n = size(A,1);
 tauvec = zeros(n,1);

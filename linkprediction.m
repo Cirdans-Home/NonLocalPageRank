@@ -1,4 +1,4 @@
-%% tester.m Tester for the Nonlocal PageRank linkprediction
+%% linkprediction.m Tester for the Nonlocal PageRank linkprediction
 % This tester reproduces the performances of the non-local pagerank on the
 % problem of predicting the edges of a given graph (digraph) G. Namely, we
 % suppose having a snapshot of the graph (digraph) G at time t0, and we

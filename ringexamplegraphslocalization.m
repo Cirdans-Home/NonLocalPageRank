@@ -1,4 +1,10 @@
 %% LOCALIZATION PHENOMENA FOR THE PAGERANK ALGORITHM
+% Code by:
+% S. Cipolla - Università di Padova, Dipartimento di Matematica
+% F. Durastante - Consiglio Nazionale delle Ricerche, Istituto per le
+% Applicazioni del Calcolo "M. Picone"
+% F. Tudisco - Gran Sasso Science Institute
+
 
 clear; clc; close all;
 

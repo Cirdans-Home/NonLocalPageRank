@@ -1,5 +1,11 @@
 %% LOCALIZATION OF THE PAGERANK MEASURE
 % Examples for the stability and non locality section of the paper
+%
+% Code by:
+% S. Cipolla - Università di Padova, Dipartimento di Matematica
+% F. Durastante - Consiglio Nazionale delle Ricerche, Istituto per le
+% Applicazioni del Calcolo "M. Picone"
+% F. Tudisco - Gran Sasso Science Institute
 
 clear; clc;
 
