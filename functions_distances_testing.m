@@ -1,7 +1,6 @@
 %% TESTING DISTANCES AND SMOOTHING FUNCTIOND
-clear all;
-clc;
-load('USAir97.mat');
+clear; clc;
+load('TestGraphs/USAir97.mat');
 A = Problem.A;
 A = A > 0;
 A=spones(A);
@@ -107,7 +106,6 @@ for i=1:size(alphavalue,2)
 end
 fig = gcf;
 fig.Position(3) = fig.Position(3) + 250;
-% add legend
 Lgnd = legend('show');
 Lgnd.FontSize = 34;
 set(Lgnd,'Interpreter','latex')
@@ -137,7 +135,6 @@ for i=1:size(alphavalue,2)
 end
 fig = gcf;
 fig.Position(3) = fig.Position(3) + 250;
-% add legend
 Lgnd = legend('show');
 Lgnd.FontSize = 34;
 set(Lgnd,'Interpreter','latex')
@@ -149,7 +146,6 @@ pause
 filename = 'shortestpath';
 savefig(filename);
 set(gcf, 'PaperPositionMode', 'auto');
-%set(gcf, 'Units', origfigunits);
 print(filename,'-depsc2');
 
 
@@ -173,7 +169,6 @@ for i=1:size(alphavalue,2)
    title(['\alpha = ',num2str(alphavalue(i))],'Interpreter','tex');
    if i==1
        xlh=xlabel('Shortest Path', 'FontSize', 25);
-       %xlh.Position(2) = xlh.Position(2) - 1e-40;  % move the label 0.1 data-units further down
        ylabel('Logarithmic', 'FontSize', 25);
    end
 end
@@ -205,13 +200,11 @@ for i=1:size(alphavalue,2)
    title(['\alpha = ',num2str(alphavalue(i))],'Interpreter','tex');
    if i==1
        xlh=xlabel('Shortest Path', 'FontSize', 25);
-       %xlh.Position(2) = xlh.Position(2) - 1e-40;  % move the label 0.1 data-units further down
        ylabel('Logarithmic', 'FontSize', 25);
    end
 end
 fig = gcf;
 fig.Position(3) = fig.Position(3) + 250;
-% add legend
 Lgnd = legend('show');
 Lgnd.FontSize = 34;
 set(Lgnd,'Interpreter','latex')
@@ -224,27 +217,4 @@ pause
 filename = 'exp_vs_log';
 savefig(filename);
 set(gcf, 'PaperPositionMode', 'auto');
-%set(gcf, 'Units', origfigunits);
 print(filename,'-depsc2');
-
-
-
-% % add a bit space to the figure
-% fig = gcf;
-% fig.Position(3) = fig.Position(3) + 250;
-% % add legend
-% Lgnd = legend('show');
-% Lgnd.FontSize = 34;
-% set(Lgnd,'Interpreter','latex')
-% Lgnd.Position(1) = 0.27;
-% Lgnd.Position(2) = 0.1;
-
-%  ha=get(gcf,'children');
-%  set(ha(1),'position',[0.453, 0.04, 0.1,  0.2 ]) %Legend
-%  set(ha(5),'position',[0.03,  0.27, 0.27, 0.54])
-%  set(ha(4),'position',[0.26, 0.27, 0.27, 0.54])
-%  set(ha(3),'position',[0.49, 0.27, 0.27, 0.54])
-%  set(ha(2),'position',[0.72, 0.27, 0.27, 0.54])
-%set(gcf,'color','white')
-
-%sgtitle('Shortest Path Distance $\delta_\Gamma$','Interpreter','latex','FontSize', 36)
