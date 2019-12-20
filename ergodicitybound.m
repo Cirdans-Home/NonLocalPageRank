@@ -21,7 +21,7 @@ erginf = ergodicity(Ginf);
 %% NONLOCAL PAGERANK
 ranks = []; ergodicityvalue = []; ErrPr = []; ErrNor = []; ergodicityvalue_estimate = [];
 alphavalue = (0.1:0.1:40);
-typeoftransition = 'exponential';
+typeoftransition = 'exponential';   % Input here the type of transformation: exponential or powerlaw
 nodes = (1:N).';
 
 for alpha = alphavalue
