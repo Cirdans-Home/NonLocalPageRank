@@ -1,6 +1,10 @@
-%%% This script creates the mathematical objects needed to analize London
-%%% tube. The output includes 11 metro lines + 2 train lines and all 
-%%% corresponding nodes.
+%%% SCRIPT TO CREATE THE MULTILAYER TENSOR OF MATRO GRAPH 
+
+% Code by:
+% S. Cipolla - Università di Padova, Dipartimento di Matematica
+% F. Durastante - Consiglio Nazionale delle Ricerche, Istituto per le
+% Applicazioni del Calcolo "M. Picone"
+% F. Tudisco - Gran Sasso Science Institute
 clear all
 clc
 addpath('./tensor_toolbox-master');
