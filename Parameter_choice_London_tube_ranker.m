@@ -17,7 +17,7 @@ load('./london_tube_graphs.mat');
 G=graph(cMgraph);
 %%% We want to consider just the subset of nodes which are on the lines 1-11
 %%% These nodes coincide with the nodes which are in the file tube_usage_data.mat
-load('./datasets/London_Multiplex_Transport/Tube_usage_data/tube_usage_data.mat')
+load('London Tube Data/tube_usage_data.mat')
 [usage_node_indexes,uni_perm]=sort(table2array(TABLE(:,1)),'ascend');
 %% Ordering the table accordingly nodes numeration 
 TABLE=TABLE(uni_perm,:);
