@@ -7,7 +7,8 @@ clear; clc; close all;
 
 fid = fopen('PhysicaAexample.txt','w+');
 
-problem = ["TestGraphs/USAir97.mat",...
+problem = ["TestGraphs/gre_216a.mat",...
+    "TestGraphs/USAir97.mat",...
     "TestGraphs/netscience.mat",...
     "TestGraphs/power.mat",...
     "TestGraphs/yeast.mat",...
@@ -15,8 +16,13 @@ problem = ["TestGraphs/USAir97.mat",...
 for testcase = problem
     % We load the Graph
     load(testcase);
-    A = Problem.A;
-    G = digraph(A,'omitselfloops');
+    A = spones(Problem.A);
+    flag_of_A_simmetry = issymmetric(A);
+    if(flag_of_A_simmetry)
+        G = graph(A,'omitselfloops');
+    else
+        G = digraph(A,'omitselfloops');
+    end
     number_of_edges = G.numedges();
     number_of_nodes = G.numnodes();
     e = ones(number_of_nodes,1);
@@ -26,8 +32,10 @@ for testcase = problem
     tau = 0.1;      % We delete 10% of the edges, i.e., the training set
                     % contains 90% of the known links.
     linktoguess = 10;
+    
     fprintf('Name of the Network: %s\n',Problem.name);
     fprintf(fid,'Name of the Network: %s\n',Problem.name);
+    fprintf(fid,'The network is symmetric : %d ( > 0 is true)\n',flag_of_A_simmetry);
     %% PageRank
     score = zeros(K,1);
     for c = linspace(0.1,0.9,10)
@@ -69,7 +77,7 @@ for testcase = problem
             score(k) = sum(partialscore)/linktoguess*100;
         end
         
-        fprintf(fid,'Standard PageRank c = %1.1f Mean Score = %1.2f +/- %1.2f Median = %1.2f\n',c,mean(score),std(score),median(score));
+        fprintf(fid,'Standard PageRank c = %1.2f Mean Score = %1.2f +/- %1.2f Median = %1.2f\n',c,mean(score),std(score),median(score));
     end
 end
 % %% NonLocalPageRank
