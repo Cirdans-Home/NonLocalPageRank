@@ -6,9 +6,9 @@
 clear; clc; close all;
 
 fid = fopen('PhysicaAexample.txt','w+');
+doplot = false;
 
-problem = ["TestGraphs/gre_216a.mat",...
-    "TestGraphs/USAir97.mat",...
+problem = ["TestGraphs/USAir97.mat",...
     "TestGraphs/netscience.mat",...
     "TestGraphs/power.mat",...
     "TestGraphs/yeast.mat",...
@@ -28,10 +28,10 @@ for testcase = problem
     e = ones(number_of_nodes,1);
     % We use the K-fold cross-validation with
     rng('default');
-    K = 50;
+    K = 1000;
     tau = 0.1;      % We delete 10% of the edges, i.e., the training set
                     % contains 90% of the known links.
-    linktoguess = 10;
+    linktoguess = 30;
     
     fprintf('Name of the Network: %s\n',Problem.name);
     fprintf(fid,'Name of the Network: %s\n',Problem.name);
@@ -59,11 +59,11 @@ for testcase = problem
             I = eye(number_of_nodes,number_of_nodes);
             X = (1-c)*((I-c*P')\I);
             X = X + X';
-            % We do not want to guess the edges we alreay know abot, so we 
+            % We do not want to guess the edges we alreay know abot, so we
             % put their predicted value to -infinity
             X(I>0) = -Inf; X(A>0) = -Inf;
-            % Now X contain a ranking of all the edges of the graph, since 
-            % X is symmetric we can look at just one of the two triangle 
+            % Now X contain a ranking of all the edges of the graph, since
+            % X is symmetric we can look at just one of the two triangle
             % for the rankings
             Xmax = triu(X);
             [max_edges,indmax] = maxk(Xmax(:),linktoguess);
@@ -71,13 +71,28 @@ for testcase = problem
             [I,J] = ind2sub([number_of_nodes number_of_nodes],indmax);
             % The index we want to add are:
             added = [I,J];
-            % We check the partialscore 
+            % We check the partialscore
             partialscore = ...
                 ismember(added,G.Edges.EndNodes(ind_deleted_edges,:),'rows');
-            score(k) = sum(partialscore)/linktoguess*100;
+            score(k) = sum(partialscore)/linktoguess;
+            if(doplot)
+                figure(1);
+                subplot(1,3,1); h = plot(G,'Layout','force');
+                subplot(1,3,1); h = plot(G,'XData',XData,'YData',YData);
+                highlight(h,G.Edges.EndNodes(ind_deleted_edges,1),G.Edges.EndNodes(ind_deleted_edges,2),'EdgeColor','red','LineWidth',3);
+                title('deleted');
+                subplot(1,3,2); plot(H,'XData',h.XData,'YData',h.YData);
+                title('without');
+                Hadd = H.addedge(added(:,1),added(:,2),ones(size(added,1),1));
+                subplot(1,3,3); h2 = plot(Hadd,'XData',h.XData,'YData',h.YData);
+                highlight(h2,added(partialscore,1),added(partialscore,2),'EdgeColor','green','LineWidth',3);
+                highlight(h2,added(~partialscore,1),added(~partialscore,2),'EdgeColor','red','LineWidth',3);
+                title('added');
+                keyboard()
+            end
         end
         
-        fprintf(fid,'Standard PageRank c = %1.2f Mean Score = %1.2f +/- %1.2f Median = %1.2f\n',c,mean(score),std(score),median(score));
+        fprintf(fid,'Standard PageRank c = %1.2f Mean Score = %1.2f +/- %1.2f Median = %1.2f\n',c,mean(score)*100,std(score)*100,median(score)*100);
     end
 end
 % %% NonLocalPageRank
