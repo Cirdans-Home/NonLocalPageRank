@@ -66,7 +66,7 @@ for k = 1:length(c_array)
         sigma = 1;                      % percentage of edges to predict
         c = c_array(k);                 % pagerank teleportation coeff
         
-        ind_deleted_edges = randi([1,m],floor(tau*m),1);
+        ind_deleted_edges = randi([1,m],floor(tau*m),1);                          
         
         for i = 1 : length(alpha_array)
             alpha = alpha_array(i);     % decay nonlocality
