@@ -35,9 +35,10 @@ clear; clc;
 %         error('Chose a dataset between 1 and 4');
 % end
 
-TestGraph={'adjnoun', 'USAir97', 'EuairComplete','football',...
-           'celegans_metabolic','polbooks','mycielskian9',...
-           'delaunay_n10','data','USpowerGrid'};
+%TestGraph={'adjnoun', 'USAir97', 'EuairComplete','football',...
+           %'celegans_metabolic','polbooks','mycielskian9',...
+           %'delaunay_n10','data','USpowerGrid'};
+TestGraph={'USAir97'};
 Result=zeros(length(TestGraph),2);
 for problem=1:length(TestGraph)
 
@@ -72,7 +73,8 @@ LocalScores = zeros(length(TestGraph), NumTrial1);
 NLocalScores= zeros(length(TestGraph),NumTrial1);
 for nmt1=1:NumTrial1
     ['Trial n: ',num2str(nmt1)]
-    ind_deleted_edges_ToTrain=randi([1,m],floor(tau*m),1); 
+    ind_deleted_edges_ToTrain=randperm(m);
+    ind_deleted_edges_ToTrain=ind_deleted_edges_ToTrain(1:floor(tau*m));
     KT=length(ind_deleted_edges_ToTrain);
     GT=G.rmedge(ind_deleted_edges_ToTrain);
     mT = numedges(GT);
