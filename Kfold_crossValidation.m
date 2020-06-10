@@ -157,7 +157,7 @@ for nmt1=1:NumTrial1
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     
     Results_TAB = [Results_TAB; table(dataset, num_nodes, num_edges, density, trial, alpha, c_nonlocal, accuracy_nonlocal, c_local, accuracy_local)];
-    disp(Results_TAB(:,5:end))
+    disp(Results_TAB(Results_TAB.dataset == dataset,5:end))
 end
 LM=sum(LocalScores(problem,:),2)/NumTrial1;
 NLM=sum(NLocalScores(problem,:),2)/NumTrial1;
