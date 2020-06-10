@@ -79,11 +79,13 @@ NumTrial1=10;
 LocalScores = zeros(length(TestGraph), NumTrial1);
 NLocalScores= zeros(length(TestGraph),NumTrial1);
 
+
+%%% Variables for final results table
 num_nodes = n;
 num_edges = m;
 density = m/(n^2);
 dataset = string(TestGraph{problem});
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 for nmt1=1:NumTrial1
 %     fprintf('Trial n: %d\n\n',nmt1);
@@ -137,20 +139,22 @@ for nmt1=1:NumTrial1
     cl=best_c_L(INTSl); % best value of c for this trial
     [~,NLocalScores(problem,nmt1)] = Predict(G,ind_deleted_edges_ToTrain,...
                              cnl(1),alpha1,KT,method,symmetry);
-    NLocalScores(problem,nmt1)=NLocalScores(nmt1)/KT;
+    NLocalScores(problem,nmt1)=NLocalScores(problem,nmt1)/KT;
     [~,LocalScores(problem,nmt1)] = Predict(G,ind_deleted_edges_ToTrain,...
                             cl(1),Inf,KT,method,symmetry);
-    LocalScores(problem,nmt1)=LocalScores(nmt1)/KT;
+    LocalScores(problem,nmt1)=LocalScores(problem,nmt1)/KT;
     
 %     fprintf('alpha  =  %1.3f \t cnl = %1.3f \t cl =%1.3f \n', alpha1, cnl, cl)
 %     fprintf('Local = %1.5f \t Nonlocal = %1.5f\n\n', LocalScores(problem,nmt1),  NLocalScores(problem,nmt1));
 
+    %%% Variables for final results table %%%%%%%%%%
     trial = nmt1;
     accuracy_local = LocalScores(problem,nmt1);
     accuracy_nonlocal = NLocalScores(problem,nmt1);
     alpha = alpha1;
     c_nonlocal = cnl;
     c_local = cl;
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     
     Results_TAB = [Results_TAB; table(dataset, num_nodes, num_edges, density, trial, alpha, c_nonlocal, accuracy_nonlocal, c_local, accuracy_local)];
     disp(Results_TAB(:,5:end))
