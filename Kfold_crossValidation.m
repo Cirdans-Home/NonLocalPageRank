@@ -35,10 +35,10 @@ clear; clc;
 %         error('Chose a dataset between 1 and 4');
 % end
 
-%TestGraph={'adjnoun', 'USAir97', 'EuairComplete','football',...
-           %'celegans_metabolic','polbooks','mycielskian9',...
-           %'delaunay_n10','data','USpowerGrid'};
-TestGraph={'USAir97'};
+TestGraph={'adjnoun', 'USAir97', 'EuairComplete','football',...
+           'celegans_metabolic','polbooks','mycielskian9',...
+           'delaunay_n10','data','USpowerGrid'};
+%TestGraph={'adjnoun'};
 Result=zeros(length(TestGraph),2);
 for problem=1:length(TestGraph)
 
@@ -61,8 +61,8 @@ m = numedges(G);
 n = numnodes(G);
 symmetry=true;
 method='inverse';
-alpha_array = [.1 .2 .3 .4 .5 1 2 3 4 5 6 7 Inf];  % decay nonlocality
-c_array = [0.08 0.2 0.3 0.4 0.5 0.6 0.7 0.85 0.9 0.99]; % pagerank teleportation coeff
+alpha_array = [.1 .2 .3 .4 .5 .6 .7 .8 .9 1 2 3 5 Inf];  % decay nonlocality
+c_array = [0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.85 0.9 0.99 ];  % pagerank teleportation coeff
 
 %alpha_array = [.4 .5 Inf];   
 %c_array     = [.1 .85 .9]; 
