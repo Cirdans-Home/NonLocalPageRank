@@ -34,11 +34,17 @@ clear; clc;
 %     otherwise
 %         error('Chose a dataset between 1 and 4');
 % end
-
-TestGraph={'adjnoun', 'USAir97', 'EuairComplete','football',...
-           'celegans_metabolic','polbooks','mycielskian9',...
-           'delaunay_n10','data','USpowerGrid'};
+% --- Old Run ---
+% TestGraph={'adjnoun', 'USAir97', 'EuairComplete','football',...
+%            'celegans_metabolic','polbooks','mycielskian9',...
+%            'delaunay_n10','data','USpowerGrid'};
 % TestGraph={'adjnoun'};
+
+% --- New Run  ---
+TestGraph={'ukerbe1', 'ukerbe1_dual','uk',...
+             'netz4504', 'grid2_dual', 'delaunay_n12',...
+             'cage9', 'cage8', '3elt','gre_1107','nasa4704'};
+%TestGraph={'gre_1107'};
 Result=zeros(length(TestGraph),2);
 
 Results_TAB = [];
@@ -51,9 +57,14 @@ for problem=1:length(TestGraph)
 
 load(['TestGraphs/',TestGraph{problem},'.mat']);
 A=spones(Problem.A);
-
-%% Defining the graph and Check If we are considering directed or not directed graph
+%% Defining the graph: -- Every NonSymmetric Graph Will be symmetrized --
 SimmetryCheck=issymmetric(A);
+
+if SimmetryCheck==0
+   A=A+A'; 
+   A=spones(A);
+   SimmetryCheck=issymmetric(A);
+end
 
 if SimmetryCheck == 1
    G=graph(A,'omitselfloops');
