@@ -120,9 +120,26 @@ for nmt1=1:NumTrial1
         K = length(ind_deleted_edges);
         %Gbar=GT.rmedge(ind_deleted_edges);
         score = zeros(length(c_array),length(alpha_array));
+        
+        
+        %%% Punto *****
+        
         for i = 1:length(c_array)
         c = c_array(i);                 % pagerank teleportation coeff
             for j = 1 : length(alpha_array)
+                
+                
+            %%% FT 
+            %%% Qua si puo milgiorare! 
+            %%% 1 - non serve calcolare H.distances ogni volta dentro
+            %%% Predict, basta farlo una volta al Punto ***
+            %%% 2 - e' meglio fare il for prima su alpha e poi su c, in modo che la matrice 
+            %%% W^alpha e quind la matrice P la facciamo una volta sola per tutti gli c
+            %%% 3 - una volta calcolata P, non e' che possiamo gia farne la
+            %%% fattorizzazione LU e poi usare quella per risolvere il
+            %%% sistema lineare (I-cP)\I per tanti valori di c a basso costo?
+
+                
             alpha = alpha_array(j);     % decay nonlocality
             [~,score(i,j)] = Predict(GT,ind_deleted_edges,c,alpha,K,method,symmetry);
             score(i,j)=score(i,j)/K;
