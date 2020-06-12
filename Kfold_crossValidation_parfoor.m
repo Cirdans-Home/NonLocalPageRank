@@ -35,15 +35,16 @@ clear; clc;
 %         error('Chose a dataset between 1 and 4');
 % end
 % --- Old Run ---
-% TestGraph={'adjnoun', 'USAir97', 'EuairComplete','football',...
-%            'celegans_metabolic','polbooks','mycielskian9',...
-%            'delaunay_n10','data','USpowerGrid'};
+
 % TestGraph={'adjnoun'};
 
 % --- New Run  ---
 TestGraph={'ukerbe1', 'ukerbe1_dual','uk',...
              'netz4504', 'grid2_dual', 'delaunay_n12',...
              'cage9', 'cage8', '3elt','gre_1107','nasa4704'};
+TestGraph={TestGraph{:},'adjnoun', 'USAir97', 'EuairComplete','football',...
+           'celegans_metabolic','polbooks','mycielskian9',...
+           'delaunay_n10','data','USpowerGrid'};
 %TestGraph={'gre_1107'};
 Result=zeros(length(TestGraph),2);
 
@@ -52,7 +53,8 @@ Results_TAB = [];
 
 rng(100)
 
-parpool(12)
+numcores = 15;
+parpool(numcores)
 
 
 for problem=1:length(TestGraph)
@@ -88,7 +90,7 @@ c_array = [0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.85 0.9 0.99 ];  % pagerank teleportatio
 %c_array     = [.1 .85 .9]; 
 tau         =  0.1;  % percentage of removed edges
 fprintf('Dataset = %s \t |V| = %d \t |E| = %d \t |E|/|V| = %1.5f\n\n',TestGraph{problem},n,m,m/(n^2));
-NumTrial1=10;
+NumTrial1=numcores;
 LocalScores = zeros(length(TestGraph), NumTrial1);
 NLocalScores= zeros(length(TestGraph),NumTrial1);
 
